@@ -1,6 +1,6 @@
 var AWS = require('aws-sdk');
 console.log('Loading function');
-
+var tag = process.env.TAGNAME;
 // Create EC2 service object
 ec2 = new AWS.EC2({
     apiVersion: '2016-11-15'
@@ -10,7 +10,7 @@ var params = {
     DryRun: false,
     Filters: [{
         Name: 'tag:Service',
-        Values: ['testrabbit']
+        Values: [tag]
     }]
 };
 
